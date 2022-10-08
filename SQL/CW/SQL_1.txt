@@ -1,0 +1,37 @@
+/*SELECT
+first_name,
+last_name,
+salary
+FROM Employees
+WHERE 
+salary>10000;*/
+
+/*SELECT
+first_name,
+last_name,
+salary
+FROM Employees
+WHERE 
+salary between 10000 and 20000;*/
+
+SELECT
+first_name,
+last_name,
+department_id
+FROM Employees
+WHERE 
+department_id not in(30, 60, 100);
+
+
+/*SELECT
+first_name,
+last_name
+FROM Employees
+WHERE first_name like '%ii%';*/
+
+/*SELECT
+first_name,
+last_name
+FROM Employees
+WHERE last_name like '%a';*/
+ 
