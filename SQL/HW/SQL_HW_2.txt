@@ -1,0 +1,152 @@
+Create table  goods (
+  id integer Primary KEY,
+  title varchar(30) NOT NULL,
+  quantity integer check (quantity>0),
+  price numeric(10,2),
+  in_stok char(1) CHECK(in_stok in ('Y','N'))
+);
+
+INSERT INTO goods VALUES (0001
+, 'clamp'
+, 23
+,'15.02'
+,'Y') ;
+
+INSERT INTO goods VALUES (0002
+, 'stapler'
+, 44
+,'18.08'
+,'N');
+
+INSERT INTO goods VALUES (0003
+, 'scotch tape'
+, 52
+,'154.02'
+,'Y');
+
+INSERT INTO goods VALUES (0004
+, 'scissors'
+, 36
+,'155.07'
+,'Y');
+
+INSERT INTO goods VALUES (0005
+, 'pen'
+, 12
+,'175.42'
+,'N');
+
+INSERT INTO goods VALUES (0006
+, 'pencil'
+, 5
+,'156.02'
+,'Y');
+
+INSERT INTO goods VALUES (0007
+, 'eraser'
+, 10
+,'185.82'
+,'N');
+
+INSERT INTO goods VALUES (0008
+, 'marker'
+, 15
+,'155.02'
+,'Y');
+
+INSERT INTO goods VALUES (0009
+, 'glue'
+, 62
+,'157.02'
+,'N');
+
+INSERT INTO goods VALUES (0010
+, 'notebook'
+, 54
+,'115.32'
+,'Y');
+
+INSERT INTO goods VALUES (0011
+, 'notepad'
+,56
+,'151.52'
+,'N');
+
+INSERT INTO goods VALUES (0012
+,'calculator'
+, 67
+,'215.02'
+,'N');
+
+INSERT INTO goods VALUES (0013
+,'sticker'
+, 94
+,'125.82'
+,'N');
+
+INSERT INTO goods VALUES (0014
+, 'notepad'
+, 52
+,'152.62'
+,'Y');
+
+INSERT INTO goods VALUES (0015
+,'sticker'
+, 12
+,'1.42'
+,'Y');
+
+INSERT INTO goods VALUES (0016
+,'sticker'
+, 64
+,'153.20'
+,'N');
+
+INSERT INTO goods VALUES (0017
+,'sticker'
+, 34
+,'135.12'
+,'Y');
+
+INSERT INTO goods VALUES (0018
+,'sticker'
+, 25
+,'315'
+,'Y');
+
+INSERT INTO goods VALUES (0019
+,'calculator'
+, 74
+,'415.72'
+,'Y');
+
+INSERT INTO goods VALUES (0020
+,'sticker'
+, 71
+,'157.92'
+,'N');
+
+INSERT INTO goods VALUES (0021
+,'punch'
+, 70
+,'175.82'
+,'Y');
+
+INSERT INTO goods VALUES (0022
+,'punch'
+, 10
+,'615.06'
+,'N');
+
+INSERT INTO goods VALUES (0023
+,'punch'
+, 16
+,'615.52'
+,'Y');
+
+INSERT INTO goods VALUES (0024
+,'punch'
+, 1
+,'156.22'
+,'Y');
+select * from goods
