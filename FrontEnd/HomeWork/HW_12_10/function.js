@@ -88,3 +88,14 @@ console.log(checkTypeOfSomeValue(258));
 console.log(checkTypeOfSomeValue(true));
 console.log(checkTypeOfSomeValue());
 */
+let checkTypeOfSomeValue = (something) => {
+    return( (typeof something === "string") ? (something.length)
+    : (typeof something === "number") ? ((String(something)).length)
+    : (typeof something ==="boolean") ? ((String(something)).length));
+   return
+};
+
+console.log(checkTypeOfSomeValue('Hello'));
+console.log(checkTypeOfSomeValue(258));
+console.log(checkTypeOfSomeValue(true));
+console.log(checkTypeOfSomeValue());
