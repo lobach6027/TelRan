@@ -5,7 +5,7 @@
 //Думаю, что если посидеть, можно придумать, что-то попроще...
 //моя первоначальная идея перевести число в строку, разбить на символы, перевести символы в числа и найти суму. Но реализовать не удалось(
 
-let digit;
+/*let digit;
 function getDigitsSum(digit){
     
     let first = Math.floor(digit/1000);
@@ -21,4 +21,35 @@ function getDigitsSum(digit){
     console.log(getDigitsSum(5025))
     console.log(getDigitsSum(5005))
     console.log(getDigitsSum(5000))
-    console.log(getDigitsSum(5555))
+    console.log(getDigitsSum(5555))*/
+
+
+    let getDigitsSum = (digit) =>{
+        let digitStr = String(digit);
+        let sum = 0; 
+
+for(let i=0; i<digitStr.length;i++){
+    
+sum += Number(digitStr[i]);
+}
+return sum;
+    };
+    console.log(getDigitsSum(5025))
+
+
+    for(let i=0; i<=2022; i++){
+        if (getDigitsSum(i)===13){
+            console.log(i)
+        }
+
+    }
+    let checkYear = (startYear, endYear,checkSum)=>{
+        let yearsArray = [];
+        for(let i = startYear; i <= endYear; i++){
+            if (getDigitsSum(i)===checkSum){
+                yearsArray.push(i);
+            }
+    }
+return yearsArray;
+}
+    console.log(checkYear(0,1000,13))

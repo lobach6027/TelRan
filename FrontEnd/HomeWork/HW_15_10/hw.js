@@ -90,11 +90,14 @@ for(i = 0; i <= 10; i++){
   
   //14. Напишите функцию, range, которая принимает два аргумента (n и m) с числовым значением и возвращает массив с числами от n до m -1.
   
-  function range(num1,num2){
-    for(i=num1; i<=num2; i++){
-     let arr = []
-    return  arr.push(i)
-  }}
+  let arr = [];
+function range(num1,num2){
+    for(let i=num1; i<=num2-1; i++){
+     arr.push(i);
+  }
+}
+  range(2,7)
+console.log(arr)
   
   //15. Напишите функцию, num_count, которая в качестве аргумента принимает целое число и возвращает количество цифр в этом числе.
   let num;
