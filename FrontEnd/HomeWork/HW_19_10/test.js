@@ -1,4 +1,3 @@
-//думаю, есть решение проще, но вообщем не хватает опыта переложить мысли в более эффективный код)) 
 
 //Напишите следующую функцию, которая принимает некий массив данных.
 
@@ -12,10 +11,35 @@
 //должна возвращать массив из двух элементов - первый это строка 'неверный тип данных в массиве',
 //а второй элемент это общая длина массива.
 
-/*
 //let arr = ["a", "av", "sdgh", "g"];
-//let arr = [2,3,5,8,24]
-let arr = ["a",2,"ghjk","254"]
+let arr = [2, 3, 5, 8, 24];
+//let arr = ["a",true,""]
+function searchLongestString(array) {
+  let longestWord;
+  let indexOflongestWord;
+  for (let i = 0; i < array.length; i++) {
+    let lengthOfLongestWord = array[1].length;
+
+    if (array[i].length > lengthOfLongestWord) {
+      longestWord = array[i];
+      indexOflongestWord = i;
+    }
+  }
+  return [longestWord, indexOflongestWord];
+}
+
+function searchbigestNumber(array) {
+  let bigestNum;
+  let indexOfbigestNum;
+  for (let i = 0; i < array.length; i++) {
+    bigestNum = array[1];
+    if (array[i] > bigestNum) {
+      bigestNum = array[i];
+      indexOfbigestNum = i;
+    }
+  }
+  return [bigestNum, indexOfbigestNum];
+}
 
 function isAllString(data) {
   let stringCount = 0;
@@ -27,7 +51,7 @@ function isAllString(data) {
 let resStr = isAllString(arr);
 
 function isAllNum(data) {
-  var stringCount = 0;
+  let stringCount = 0;
   for (let i = 0; i <= data.length; i++) {
     if (typeof data[i] === "number") stringCount++;
   }
@@ -35,36 +59,20 @@ function isAllNum(data) {
 }
 let resNum = isAllNum(arr);
 
+
 function checkArray(arr) {
   if (resStr == true) {
-    let longestWord;
-    for (let i = 0; i < arr.length; i++) {
-      let lengthWord = arr[1].length;
-
-      if (arr[i].length > lengthWord) {
-        longestWord = arr[i];
-      }
-    }
-    return [longestWord, longestWord.length];
+    return searchLongestString(arr);
   } else if (resNum == true) {
-    let bigestNum;
-    for (let i = 0; i < arr.length; i++) {
-      bigestNum = arr[1];
-
-      if (arr[i] > bigestNum) {
-        bigestNum = arr[i];
-      }
-    }
-    return [bigestNum, arr.indexOf(bigestNum)];
+    return searchbigestNumber(arr);
   } else {
     console.log([arr.length, "неверный тип данных в массиве"]);
   }
 }
-console.log(checkArray(arr))
+console.log(checkArray(arr));
 
-*/
 
-//(Необязательная задача) Напишите функцию которая будет принимать три массива
+/*//(Необязательная задача) Напишите функцию которая будет принимать три массива
  //с любыми данными и объединять их в один, новый массив и возвращать его.
   //В зависимости от типа данных вы должны упорядочить данные. Сначала добавляйте 
   //только строки, затем цифры, затем булевы значения, все 
@@ -81,13 +89,14 @@ function mergeArrays(arr1, arr2, arr3) {
   let sortArrayBoolean = [];
   let sortArrayAnother = [];
   
+  
   for (let i = 0; i < unionArray.length; i++) {
     const element = unionArray[i];
     if (typeof element === "string") {
       sortArrayStr.push(element);
     } else if (typeof element === "number") {
       sortArrayNum.push(element);
-    } else if (typeof element === "bolean") {
+    } else if (typeof element === "boolean") {
       sortArrayBoolean.push(element);
     } else {
       sortArrayAnother.push(element);
@@ -96,4 +105,4 @@ function mergeArrays(arr1, arr2, arr3) {
 let sortUnionArray = [].concat(sortArrayStr,sortArrayNum,sortArrayBoolean,sortArrayAnother)
   return sortUnionArray;
 }
-console.log(mergeArrays(arr1, arr2, arr3));
+console.log(mergeArrays(arr1, arr2, arr3));*/

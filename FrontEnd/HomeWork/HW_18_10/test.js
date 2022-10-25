@@ -21,6 +21,10 @@ console.log(camelize(str1));
 console.log(camelize(str2));
 
 
+///функция увеличивающая первый элемент UPCase
+ function firstSimbUp (str){
+  return str.slice(0,1)+str.slice(1)
+ }
 // Задача: написать функцию, принимающую массив чисел
 //и возвращающую сумму всех его положительных элементов и отрицательных 
 //чисел отдельно в виде нового массива
@@ -41,8 +45,11 @@ let someSume = function (arr) {
       sum2 += element;
     }
   }
-
-  console.log(sum1);
-  console.log(sum2);
+return [sum1,sum2]
+  //console.log(sum1);
+  //console.log(sum2);
 };
 console.log(someSume(arr1));
+
+
+
