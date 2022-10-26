@@ -1,4 +1,3 @@
-
 //Напишите следующую функцию, которая принимает некий массив данных.
 
 //если в массиве только строковый тип данных, то функция должна находить
@@ -11,17 +10,10 @@
 //должна возвращать массив из двух элементов - первый это строка 'неверный тип данных в массиве',
 //а второй элемент это общая длина массива.
 
-
-
-
-
-
-
-
-/*
 //let arr = ["a", "av", "sdgh", "g"];
-let arr = [2, 3, 5, 8, 24];
-//let arr = ["a",true,""]
+//let arr = [2, 3, 5, 8, 24];
+let arr = ["a", true, ""];
+
 function searchLongestString(array) {
   let longestWord;
   let indexOflongestWord;
@@ -56,7 +48,6 @@ function isAllString(data) {
   }
   return stringCount == data.length;
 }
-let resStr = isAllString(arr);
 
 function isAllNum(data) {
   let stringCount = 0;
@@ -65,13 +56,11 @@ function isAllNum(data) {
   }
   return stringCount == data.length;
 }
-let resNum = isAllNum(arr);
-
 
 function checkArray(arr) {
-  if (resStr == true) {
+  if (isAllString(arr)) {
     return searchLongestString(arr);
-  } else if (resNum == true) {
+  } else if (isAllNum(arr)) {
     return searchbigestNumber(arr);
   } else {
     console.log([arr.length, "неверный тип данных в массиве"]);
@@ -79,13 +68,12 @@ function checkArray(arr) {
 }
 console.log(checkArray(arr));
 
-
 //(Необязательная задача) Напишите функцию которая будет принимать три массива
- //с любыми данными и объединять их в один, новый массив и возвращать его.
-  //В зависимости от типа данных вы должны упорядочить данные. Сначала добавляйте 
-  //только строки, затем цифры, затем булевы значения, все 
+//с любыми данными и объединять их в один, новый массив и возвращать его.
+//В зависимости от типа данных вы должны упорядочить данные. Сначала добавляйте
+//только строки, затем цифры, затем булевы значения, все
 //остальные значения могут быть в произвольном порядке добавлены далее.
-
+/*
 let arr1 = [2, false, 5, true, 24];
 let arr2 = [2, "b", 5, "f", 24];
 let arr3 = [2, "ghj", 5, "h", false,[]];
