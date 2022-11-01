@@ -1,39 +1,55 @@
+console.log(
+  " Подсчёт количества свойств объекта. Напишите функцию count(obj), которая возвращает количество свойств объекта:"
+);
+
+let user1 = {
+  name: "John",
+  age: 30,
+  position: "manager",
+  salary: 12000,
+};
+
+let count = (obj) => {
+  let quantity = 0;
+  for (const key in obj) {
+    quantity += 1;
+  }
+  return `quantity of object properties is ${quantity}`;
+};
+console.log(count(user1));
 
 console.log(
-    " Подсчёт количества свойств объекта. Напишите функцию count(obj), которая возвращает количество свойств объекта:"
-  );
-  
-  let user1 = {
-    name: "John",
-    age: 30,
-    position: "manager",
-    salary: 12000,
-  };
-  
-  let count = (obj) => {
-    let quantity = 0;
-    for (const key in obj) {
-      quantity += 1;
+  "Создайте функцию topSalary(salaries), которая возвращает имя самого высокооплачиваемого сотрудника."
+);
+let salaries = {
+  John: 100,
+  Pete: 300,
+  Mary: 250,
+};
+
+let salaries1 = {};
+
+
+//Первая проба без проверки на пустой обьект
+
+/*let topSalary = (obj) => {
+  let maxSalary = 0;
+  let topWorker = [];
+  for (const key in obj) {
+    if (obj[key] > maxSalary) {
+      maxSalary = salaries[key];
+      topWorker.splice(0, 1, key);
     }
-    return `quantity of object properties is ${quantity}`;
-  };
-  console.log(count(user1));
-  
+  }
+  return `The worker with highest salary is ${topWorker}`;
+};*/
 
 
-
-
-  
-  console.log(
-    "Создайте функцию topSalary(salaries), которая возвращает имя самого высокооплачиваемого сотрудника."
-  );
-  let salaries = {
-    John: 100,
-    Pete: 300,
-    Mary: 250,
-  };
-  
-  let topSalary = (obj) => {
+let topSalary = (obj) => {
+  let objLength = Object.keys(obj).length;
+  if (objLength == 0) {
+    return null;
+  } else {
     let maxSalary = 0;
     let topWorker = [];
     for (const key in obj) {
@@ -43,6 +59,7 @@ console.log(
       }
     }
     return `The worker with highest salary is ${topWorker}`;
-  };
-  console.log(topSalary(salaries));
-  
+  }
+};
+console.log(topSalary(salaries));
+console.log(topSalary(salaries1));
