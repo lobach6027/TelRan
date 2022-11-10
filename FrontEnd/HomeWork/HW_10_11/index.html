@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+.ex_1{
+    height: 100px;
+    width: 450px;
+    border: 1px solid black;
+    padding: 30px;
+    box-sizing: border-box;
+}
+.ex_1 button{
+    background-color: lightblue;
+    border: none;
+    height: 25px;
+    width: 80px;
+}
+.changeTitleOfParagraph{
+        width: 450px;
+        height: 200px;
+        border: 1px solid black;
+        padding: 30px;
+        box-sizing: border-box;
+    }
+    .title{
+        color: black;
+    }
+    .changeTitleOfParagraph p{
+        color: rgb(73, 73, 82);
+        
+    }
+    </style>
+</head>
+<body>
+    <div class="changeTitleOfParagraph">
+        <h3 class="title">Заголовок, не поменяется.</h2>
+        <p>Абзац 1 , поменяется.</p>
+        <p>Абзац 2 , поменяется.</p>
+        <p>Абзац 3 , поменяется.</p>
+    </div>
+    <br>
+    <div class="ex_1">
+        <button class="makeBlock">block</button>
+        <button class="makeUnblock">unblock</button>
+        <input class="blockUnblock" type="text">
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>
