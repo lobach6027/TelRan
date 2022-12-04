@@ -6,14 +6,24 @@ productsForm.addEventListener("submit", (event) => {
   const productName = productsForm.title.value;
   const productPrice = productsForm.price.value;
   const productCount = productsForm.count.value;
-  products.push({ productName, productPrice, productCount });
+  const id = Date.now();
+  products.push({id, productName, productPrice, productCount });
   productsForm.title.value = "";
   productsForm.price.value = "";
   productsForm.count.value = "";
   rerend();
 });
+
+
+
+
 const result = document.querySelector(".allOrder");
 const orderBlock = document.querySelector(".order");
+
+
+function delProduct(id) {
+  products= products.filter(product=>product.id!=id);
+ }
 
 function rerend() {
   orderBlock.innerText = "";
@@ -22,14 +32,21 @@ function rerend() {
     const elem_name = document.createElement("h2");
     const elem_price = document.createElement("p");
     const fullPrice = document.createElement("p");
+    const deleteBtn = document.createElement("button");
 
+
+    
+
+
+deleteBtn.innerText = "delete this position"
+deleteBtn.addEventListener('click',()=> delProduct(id))
     elem_name.innerText = product.productName;
     elem_price.innerText = product.productPrice + '$';
 
     const price = Number(product.productPrice) * Number(product.productCount);
     fullPrice.innerText = `${product.productPrice}*${product.productCount} = ${price} $`;
 
-    container.append(elem_name, elem_price, fullPrice);
+    container.append(elem_name, elem_price, fullPrice,deleteBtn);
     orderBlock.append(container);
   });
 
@@ -42,7 +59,6 @@ function rerend() {
     0
   );
   const summ = priceOneTypeProduct.reduce((sum, item) => sum + item, 0);
-  console.log(priceOneTypeProduct);
 
   const container_div = document.createElement("div");
   const elemFullPrice = document.createElement("p");

@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.main{ 
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  margin: auto;
+  padding: 20px;
+  width: 600px;
+  background: url(https://img4.goodfon.ru/wallpaper/nbig/2/f9/winter-snezhinki-background-zima-fon-snowflakes.jpg);
+  background-size: cover;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.input-field {
+  padding: 5px;
+  outline: none;
+}
+.summer{
+background: url(https://img5.goodfon.ru/wallpaper/nbig/f/84/zelen-listia-priroda-fon.jpg);
+
+}
+.btn{
+  position: fixed;
+  top: 10px;
+  right: 20px;
+  background: rgb(153, 172, 153);
+  border: none;
+  padding: 7px;
+  border-radius: 3px;
+  cursor: pointer;
+}
