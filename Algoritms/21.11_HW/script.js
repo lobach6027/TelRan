@@ -1,12 +1,38 @@
 //  Даны два целых числа x и n, напишите функцию для вычисления x^n
 
-function exponentiation(number, power) {
+function exponentiation(number, power) {                                                                                         
   if (power === 0) {
     return 1;
   } else if (power === 1) {
     return number;
   } else {
     return number * exponentiation(number, power - 1);
+  }
+}
+
+function power(x, n) {
+  if (n === 0) {
+    return 1;
+  }
+  let res = x;
+  for (let i = 0; i < n; i++) {
+    res *= x;
+  }
+  return res;
+}
+
+console.log(power(2, 4));
+function powerRecImproved(x, n) {
+  if (n == 0) {
+      return 1;
+  }
+
+  let half = powerRecImproved(x, Math.floor(n / 2));
+
+  if (n % 2 == 0) {
+      return half * half;
+  } else {
+      return half * half * x;
   }
 }
 
@@ -50,20 +76,20 @@ console.log(searchElem(arr1, arr2, 7));
 //Имея отсортированный массив arr[] и число x,
 //напишите функцию, которая подсчитывает вхождения x в arr[].
 //Ожидаемая временная сложность O(Log n)
-arr3=[1, 1, 2, 2, 2, 2, 3]
+arr3 = [1, 1, 2, 2, 2, 2, 3];
 
 function numberSearshElem(array, searchNum) {
   let arrOfSearchElem = [];
-  for (let i = 0; i < (Math.round(array.length/2)); i++) {
+  for (let i = 0; i < Math.round(array.length / 2); i++) {
     if (searchNum === array[i]) {
       arrOfSearchElem.push(array[i]);
     }
   }
-  for (let j = (Math.round(array.length/2)); j < array.length; j++) {
+  for (let j = Math.round(array.length / 2); j < array.length; j++) {
     if (searchNum === array[j]) {
       arrOfSearchElem.push(array[j]);
     }
   }
-  return arrOfSearchElem.length
+  return arrOfSearchElem.length;
 }
-console.log(numberSearshElem(arr3,2))
+console.log(numberSearshElem(arr3, 2));
