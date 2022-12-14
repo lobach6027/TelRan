@@ -28,3 +28,5 @@ btn.addEventListener("click", () => {
     localStorage.setItem("mode", "winter");
   }
 });
+
+
