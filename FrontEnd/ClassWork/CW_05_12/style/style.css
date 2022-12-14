@@ -1,0 +1,56 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.add_task {
+  max-width: 900px;
+  background: #00b894;
+  margin: 40px auto;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  border: none;
+}
+
+.add_task input {
+  width: 70%;
+  padding: 10px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+.add_task button {
+  width: 30%;
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fdcb6e;
+  border-radius: 5px;
+  border: none;
+}
+.tasks {
+  background: #00b894;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+.tasks div {
+  
+  padding: 20px;
+  background-color: #f6edcf;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 5px;
+}
+.tasks button{
+    border: none;
+    cursor: pointer;
+    background: #fdcb6e;
+    padding: 7px;
+    border-radius: 5px;
+}

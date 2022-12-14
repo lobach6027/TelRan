@@ -49,33 +49,72 @@ btnElem.addEventListener('click',
 ()=> (pElem.innerText = `${randomNum()},${randomNum()}`)
 )*/
 
+let data = [
+  { id: 1, title: "Velo", price: 45000 },
+  { id: 2, title: "Ski", price: 7500 },
+  { id: 3, title: "Moto", price: 87500 },
+];
+const add_form = document.querySelector(".add_form");
+const products = document.querySelector(".products");
+
+add_form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const title = add_form.title.value;
+  const price = add_form.price.value;
+  const id = Date.now();
+  if(title.length>0){
+    data.push({id, title, price });
+  }
+  add_form.title.value = "";
+  add_form.price.value = "";
+  rerender();
+
+});
 
 
-const data = [];
-const add_form = document.querySelector('.add_form');
-const products = document.querySelector('.products');
+function randomColor(){
+  const r = Math.round(Math.random()*255);
+  const g = Math.round(Math.random()*255);
+  const b = Math.round(Math.random()*255);
+  return`rgb(${b},${g},${b})`
+}
 
-add_form.addEventListener('submit',(event)=>{
-    event.preventDefault();
-    const title = add_form.title.value;
-    const price = add_form.price.value;
-    data.push({title,price})
-    add_form.title.value = ''
-    add_form.price.value = ''
-    rerender()
-})
+function deleteProduct(id){
+  data = data.filter(product=>product.id!==id)
+  rerender()
+}
 
-function rerender(){
-    products.innerText = '';
-data.forEach(product=>{
-   const container = document.createElement('div');
-    const elem_p_title = document.createElement('p');
-    const elem_p_price = document.createElement('p');
-    
-    elem_p_title.innerText = product.title;
-    elem_p_price.innerText = product.price;
+function madeCard(id,title,price){
+  const container = document.createElement("div");
+      const elem_p_title = document.createElement("p");
+      const elem_p_price = document.createElement("p");
+      const elem_button_del = document.createElement("button");
+      elem_button_del.innerText = "Delete";
+      elem_button_del.addEventListener("click", () =>deleteProduct(id));
 
-   container.append(elem_p_title,elem_p_price);
+      elem_p_title.innerText = title;
+      elem_p_price.innerText = price;
+      container.classList.add("product");
+      container.addEventListener('mousemove',()=>{container.style.backgroundColor = randomColor()})
+      container.append(elem_p_title, elem_p_price, elem_button_del);
+  return container;
+}
 
-    products.append(container);
-})}
+
+
+
+function rerender() {
+  products.innerText = "";
+  if (data.length === 0) {
+    const elem_p_emptyArr = document.createElement("p");
+    elem_p_emptyArr.innerText = "   Product is not found.";
+    products.append(elem_p_emptyArr);
+  } else {
+    data.forEach(({id,title,price}) => {
+      const container = madeCard(id,title,price);
+      products.append(container);
+    });
+  }
+}
+rerender();
+

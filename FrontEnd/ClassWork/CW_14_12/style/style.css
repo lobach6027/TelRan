@@ -1,0 +1,37 @@
+.post{
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+background-color: rgb(247, 243, 243);
+}
+.subheader{
+    font-size: 30px;
+}
+
+.add_post_form{
+    max-width: 900px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    padding: 20px;
+    justify-content: space-around;
+    background-color: rgb(230, 243, 247);
+    margin-top: 20px;
+    gap: 10px;
+
+}
+.add_post_form button{
+    width: 50%;
+    align-self: flex-end;
+    min-width: 100px;
+    background-color: rgb(144, 136, 136);
+}
+.add_post_form >*{
+    padding: 10px;
+    resize: none;
+    border: none;
+    outline: none;
+
+}
