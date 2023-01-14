@@ -1,0 +1,9 @@
+{
+    "posts":[
+       {
+    "id":1,
+    "title":"My first posts title",
+    "descr":"Description of my first post"
+    } 
+    ]
+}

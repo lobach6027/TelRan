@@ -1,0 +1,68 @@
+
+select*from hr.jobs;
+select*from hr.employees;
+select*from hr.departments;
+select * from hr.locations;
+
+//Вывести имя, фамилию, зарплату, должность и минимальную зарплату для этой должности для всех сотрудников.
+
+select 
+t1.FIRST_NAME,
+t1.LAST_NAME,
+t1.SALARY,
+t2.MIN_SALARY,
+t2.JOB_TITLE
+from hr.employees t1
+inner join hr.jobs t2
+on t1.JOB_ID = t2.JOB_ID;
+
+//2.	Вывести имя, фамилию, должность, департамент и название города, где находится департамент.
+select 
+t1.FIRST_NAME,
+t1.LAST_NAME,
+t2.JOB_TITLE,
+t3.DEPARTMENT_NAME,
+t4.CITY
+from hr.employees t1
+inner join hr.jobs t2
+on t1.JOB_ID = t2.JOB_ID;
+inner join hr.departments t3
+on t1.DEPARTMENT_ID = t3.DEPARTMENT_ID
+inner join hr.locations t4
+on t3.LOCATION_ID = t4.LOCATION_ID;
+
+// Вывести имя, фамилию, зарплату, должность, минимальную и максимальную зарплату для этой должности только тех сотрудников, у которых зарплата равняется либо минимальной зарплате, либо максимальной.
+
+select 
+t1.FIRST_NAME,
+t1.LAST_NAME,
+t1.SALARY,
+t2.MIN_SALARY,
+t2.MAX_SALARY,
+t2.JOB_TITLE
+from hr.employees t1
+inner join hr.jobs t2
+on t1.JOB_ID = t2.JOB_ID
+where t1.SALARY=t2.MIN_SALARY or  t1.SALARY=t2.MAX_SALARY;
+
+// Вывести названия департаментов, улицу в которой он находится и название города, которые находятся в штатах/провинции.
+
+select 
+t1.DEPARTMENT_NAME,
+t2.STREET_ADDRESS,
+t2.CITY
+from hr.departments t1
+inner join hr.locations t2
+on t1.LOCATION_ID=t2.LOCATION_ID
+where STATE_PROVINCE is not null;
+
+// Вывести имя, фамилию, зарплату тех работников, которые зарабатывают больше, чем Den Raphaely. (Self join)
+select 
+t1.FIRST_NAME,
+t1.LAST_NAME,
+t1.SALARY,
+from hr.employees t1, hr.employees t2
+inner join hr.jobs t2
+on t1.JOB_ID = t2.JOB_ID;
+
+

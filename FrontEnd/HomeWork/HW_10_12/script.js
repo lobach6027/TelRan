@@ -35,6 +35,7 @@ function rerender() {
   if (read_local().length === 0) {
     const info = document.createElement("p");
     info.innerText = "There are no products selected...";
+    allorderContainer.innerText = "Price and count of selected items will be displayed here!"
     orderContainer.append(info);
   } else {
     read_local().forEach(({ id, productName, productPrice, productCount }) => {
@@ -48,7 +49,7 @@ function rerender() {
       const fullCount = document.createElement("p");
       allorderContainer.append(fullCost, fullCount);
       fullCost.innerText = `Full cost: ${read_local().reduce(
-        (sum, item) => sum + Number(item.productPrice),
+        (sum, item) => sum + Number(item.productPrice*item.productCount),
         0
       )} $`
       fullCount.innerText = `Full count: ${read_local().reduce(
@@ -86,4 +87,3 @@ function deleteCard(id) {
   write_local(newArray);
   rerender();
 }
-

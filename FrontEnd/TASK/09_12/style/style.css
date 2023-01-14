@@ -44,7 +44,6 @@ main {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 30px;
-  padding: 10px;
   padding-right: 0;
   border-radius: 8px 0 0 8px;
 }
@@ -76,8 +75,11 @@ button{
     border-radius: 8px;
 
 }
-.notification.submit-success{
+.notification.success{
     background-color: lightgreen;
+}
+.notification.danger{
+  background-color: rgb(207, 121, 115);
 }
 .notification-text{
     font-size: 20px;
