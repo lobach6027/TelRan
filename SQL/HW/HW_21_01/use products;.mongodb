@@ -1,0 +1,87 @@
+use products;
+db.products.find();
+//1. Найти товары, количество которых больше 10
+
+db.products.find({"quantity":{$gt:10}});
+
+// 2. Найти товары, количество которых от 10 до 20 (включительно)
+// и цена больше 20000
+
+db.products.find({"quantity":{$gte:10,$lte:20},"price":{$gt:20000}})
+
+// 3. У всех товаров, кол-во которых меньше 10, задайте кол-во 10
+
+db.products.updateMany({"quantity":{$lt:10}},{$set:{"quantity":10}})
+
+// 4. Всем товарам задать свойство city со значением Berlin
+
+db.products.updateMany({},{$set:{"city":"Berlin"}})
+
+// 5. Документам с id 1, 3, 5, цена которых больше или равна 
+//10000 изменить значение свойства city на Paris
+
+db.products.updateMany({"_id":{$in:[1,3,5]},
+                        price:{$gte:10000}},
+                        {$set:{"city":"Paris"}})
+
+
+// 6. У всех документов переименовать city в product_city
+
+db.products.updateMany({},{$rename:{"city":"product_city"}})
+
+
+// 7. У всех документов удалить свойство discount
+
+db.products.updateMany({},{$set:{"discount":0}})
+db.products.updateMany({},{$unset:{"discount":''}})
+// 1. Всем документам добавить свойство country 
+// и задать ему значение [
+
+db.products.updateMany(
+  {},
+  {$set:{country:[]}}
+)
+
+db.products.updateMany(
+  {"_id":{$in:[2,4,7]}},
+  {$push:{country:'Germany'}}
+  )
+
+  db.products.updateMany(
+  {"_id":{$in:[2,4,7]}},
+  {$addToSet:{country:'France'}}
+  )
+
+
+db.products.updateMany(
+  {"_id":{$in:[1,3,5]}},
+  {$push:{country:{$each:['Spaine','Ukraine']}}}
+  )
+// 4. Документу с айди 5 в массив country добавить Spain и Ukraine, без дублей
+
+db.products.updateMany(
+  {_id: 5},
+  {$addToSet: {country: {$each: ['Spain', 'Ukraine']} }}
+)
+
+// 5. Всем документам увеличить count на 3
+
+db.products.updateMany(
+  {},
+  {$inc: {count: 3}}
+)
+
+// 6. Всем документам уменьшить count на 5
+
+db.products.updateMany(
+  {},
+  {$inc: {count: -5}}
+)
+
+
+
+
+
+
+
+

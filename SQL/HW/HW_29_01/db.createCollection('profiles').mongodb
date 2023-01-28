@@ -1,0 +1,112 @@
+db.createCollection('profiles')
+db.profiles.insertMany([  
+  {
+		_id: 1,
+		firstname: "Ivan",
+		lastname: 'Petrov',
+		age: 28,
+		gender: 'male',
+		position: 'Product manager',
+		salary: 5000,
+		country: 'Germany',
+		city: 'Berlin'
+	},
+  {
+		_id: 2,
+		firstname: "Svetlana",
+		lastname: 'Ivanova',
+		age: 38,
+		gender: 'female',
+		position: 'Designer',
+		salary: 2000,
+		country: 'Germany',
+		city: 'Bremen'
+	},
+  {
+		_id: 3,
+		firstname: "Olga",
+		lastname: 'Sidorova',
+		age: 28,
+		gender: 'female',
+		position: 'PR manager',
+		salary: 4500,
+		country: 'Germany',
+		city: 'Dresden'
+	},
+  {
+		_id: 4,
+		firstname: "Ivan",
+		lastname: 'Petrov',
+		age: 56,
+		gender: 'male',
+		position: 'Product manager',
+		salary: 5700,
+		country: 'Germany',
+		city: 'Berlin'
+	},
+  {
+		_id: 5,
+		firstname: "Semen",
+		lastname: 'Petrov',
+		age: 28,
+		gender: 'male',
+		position: 'Product manager',
+		salary: 4000,
+		country: 'France',
+		city: 'Paris'
+	},
+  {
+		_id: 6,
+		firstname: "Olga",
+		lastname: 'Petrova',
+		age: 27,
+		gender: 'female',
+		position: 'Product manager',
+		salary: 8000,
+		country: 'Spain',
+		city: 'Madrid'
+	},
+  {
+		_id: 7,
+		firstname: "Ivan",
+		lastname: 'Ushanov',
+		age: 34,
+		gender: 'male',
+		position: 'Product manager',
+		salary: 5100,
+		country: 'Germany',
+		city: 'Berlin'
+	}
+])
+//
+// 1. Людям с айди от 4 до 6 увеличить зарплату на 300
+db.profiles.updateMany({_id:{$gte:4,$lte:6}},{$inc:{salary:300}})
+db.profiles.find();
+
+// 2. Вывести первые три документа из коллекции
+db.profiles.find().limit(3)
+
+// 3. Вывести 4, 5, 6 и 7 документы из коллекции
+
+db.profiles.find().skip(3);
+
+//вопрос!!!
+db.profiles.find(
+  {},
+  {city: {$slice: -4}}
+)
+
+// 4. Отсортировать документы по возрасту людей (от самого младшего к самому старшему)
+
+db.profiles.find().sort({age:1})
+
+
+// 5. Отсортировать документы по зарплате людей (от самой большой зарплаты до самой маленькой)
+db.profiles.find().sort({salary:-1})
+
+// 6. Вывести 5 документов из коллекции c самой большой зарплатой
+db.profiles.find().sort({salary:-1}).limit(5)
+
+// 7. Вывести 5 самых молодых людей из коллекции
+db.profiles.find().sort({age:1}).limit(5)
+
