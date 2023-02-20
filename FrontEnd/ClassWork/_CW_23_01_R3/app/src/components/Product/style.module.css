@@ -1,0 +1,16 @@
+.card{
+    padding: 10px;
+    margin: 0 auto 20px;
+    max-width: 50%;
+    background: lightcyan;
+    border: 1px solid black;
+   
+
+}
+.expensive{
+font-size: 30px;
+}
+.free{
+    color: gray;
+    text-decoration: line-through;
+}

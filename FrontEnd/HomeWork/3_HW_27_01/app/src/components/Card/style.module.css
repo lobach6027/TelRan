@@ -1,0 +1,29 @@
+.container {
+    border: 1px solid black;
+    display: flex;
+    padding: 20px;
+    gap: 15px;
+    margin: 10px;
+    background-color: rgba(12, 12, 12, 0.951);
+    color: white;
+   
+  }
+  .pict {
+    max-width: 200px;
+    padding: 10px;
+    height: 200px;
+    object-fit: cover;
+    border: 1px solid rgba(0, 0, 0, 0.857);
+    background-color: white;
+  }
+  .info {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+  }
+  .button {
+    padding: 10px;
+    width: 200px;
+    align-self: flex-end;
+  }
+  

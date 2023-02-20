@@ -1,0 +1,13 @@
+.cardBasket{
+    display: flex;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 5px auto 5px;
+    justify-content: space-between;
+}
+.changeCount{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+}

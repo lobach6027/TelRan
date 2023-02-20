@@ -1,0 +1,14 @@
+.card {
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid black;
+  background-image: linear-gradient(to bottom right, rgb(221, 221, 229), white);
+  border-radius: 10px;
+}
+.card img{
+    width: 30%;
+}
+.info{
+    width: 60%;
+}

@@ -1,0 +1,9 @@
+{
+  "notes": [
+    { "id": 1, "text": "Text1" , "descr": "Lorem.............."},
+    { "id": 2, "text": "Text2" , "descr": "Lorem.............."},
+    { "id": 3, "text": "Text3" , "descr": "Lorem.............."},
+    { "id": 4, "text": "Text4" , "descr": "Lorem.............."},
+    { "id": 5, "text": "Text5" , "descr": "Lorem.............."}
+  ]
+}

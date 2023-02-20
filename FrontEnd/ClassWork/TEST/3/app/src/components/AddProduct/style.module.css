@@ -1,0 +1,11 @@
+.form{
+    max-width: 50%;
+    padding: 30px;
+    margin: 0 auto 20px;
+    border: 1px solid black;
+    background-color: beige;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
