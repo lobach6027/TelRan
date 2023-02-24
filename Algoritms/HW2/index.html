@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+// task #0 Квадратическая сложность, это похоже на бабл сорт...О(2)+O(5)*O(6)  = О(32)
+    //пока не совсем понимаю, как подсчитать сложность операций внутри цикла) 
+let arr = [9, 3, 7, 4, 1, 2];// O(1)
+alert(arr); // O(1)
+for (let i = 0; i < arr.length; i++) { //O(6)
+  for (let j = 0; j < arr.length - i; j++) { //O(5)
+    if (arr[j] > arr[j + 1]) { //О(1)
+      let t = arr[j]; //О(1)
+      arr[j] = arr[j + 1]; //О(1)
+      arr[j + 1] = t; //О(1)
+    }
+  }
+}
+alert(arr);
+
+
+// task #1 В лучшем случае сложность константная O(1)+O(2)=O(3)
+// В худшем случае сложность квадратическая  O(1)+O(n)*O(n)+O(1)+O(1)= O(3)+O(n*n) = O(n*n)
+START
+READ number n //О(1)
+IF n == 1 THEN return //O(2)
+FOR i = 1, i <= n, i + 1 // O(n)
+  FOR j = 1; j <= n, j + 1// O(n)
+    print "*"//  О(1)
+    BREAK//О(1)
+END
+
+
+// task #2 Сложность алгоритма O(n*n*log(n))
+START
+READ number n //Константная сложность
+numbers i = 0, j = 0, a = 0 //Константная сложность
+FOR i = n/2, i <= n; i + 1 // O(n/2)
+  FOR j = 2, j <= n, j * 2 // O(n*log(n))
+    a = a + n / 2 
+END
+
+
+// task #3  Квадратическая сложность O(n*n)
+START
+READ number n //Константная сложность
+number a = 0 //Константная сложность
+FOR i = 0, i < n, i + 1  // O(n)
+  FOR j = n, j > i, j - 1 // O(n)
+    a = a + i + j 
+END
+
+
+// task #4  Логарифмическая сложность алгоритма O(log(n))
+START
+READ number n //Константная сложность
+numbers a = 0, i = n //Константная сложность
+WHILE i > 0 // O(log(n))
+  a = a + i 
+  i = i / 2
+END
+
+    </script>
+</body>
+</html>
