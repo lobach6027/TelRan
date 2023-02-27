@@ -1,7 +1,10 @@
+
 import ProductContainer from "../ProductContainer";
 
 function App() {
-  return <ProductContainer />;
+  return <div>
+    <ProductContainer />
+  </div>;
 }
 
 export default App;

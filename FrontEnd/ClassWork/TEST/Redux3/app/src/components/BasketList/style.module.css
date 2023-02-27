@@ -1,0 +1,8 @@
+.basketContainer{
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+}
+h2{
+    text-align: center;
+}

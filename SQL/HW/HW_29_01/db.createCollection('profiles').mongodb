@@ -90,11 +90,6 @@ db.profiles.find().limit(3)
 
 db.profiles.find().skip(3);
 
-//вопрос!!!
-db.profiles.find(
-  {},
-  {city: {$slice: -4}}
-)
 
 // 4. Отсортировать документы по возрасту людей (от самого младшего к самому старшему)
 
@@ -110,3 +105,167 @@ db.profiles.find().sort({salary:-1}).limit(5)
 // 7. Вывести 5 самых молодых людей из коллекции
 db.profiles.find().sort({age:1}).limit(5)
 
+db.createCollection('workers')
+
+db.workers.insertMany([
+  {
+    _id: 1,
+    firstname: 'Inga',
+    lastname: 'Petrova',
+    age: 27,
+    position: 'Barista',
+    salary: 1500,
+    skills: ['preparing drinks', 'cleaning equipment']
+  },
+  {
+    _id: 2,
+    firstname: 'Boris',
+    lastname: 'Orlov',
+    age: 36,
+    position: 'Server',
+    salary: 2400,
+    skills: ['taking orders', 'suggesting meals', 'taking payments']
+  },
+  {
+    _id: 3,
+    firstname: 'Ivan',
+    lastname: 'Demidov',
+    age: 32,
+    position: 'Chef',
+    salary: 3200,
+    skills: ['preparing food', 'baking bread']
+  },
+  {
+    _id: 4,
+    firstname: 'Marina',
+    lastname: 'Sidorov',
+    age: 22,
+    position: 'Hostess',
+    salary: 1700,
+    skills: ['greeting guests', 'seating guests', 'answering phone calls']
+  },
+  {
+    _id: 5,
+    firstname: 'Olga',
+    lastname: 'Ivanova',
+    age: 43,
+    position: 'Sommelier',
+    salary: 2500,
+    skills: ['curating a wine list', 'creating wine pairings']
+  }
+])
+db.workers.find()
+// 3. Работнику с айди 4 увеличить зарплату на 400
+db.workers.updateOne({_id:4},{$inc:{salary:400}})
+
+// 4. Работникам с айди 1 и 3 изменить зарплату на 1800
+db.workers.updateMany({_id:{$in:[1,3]}},{$set:{salary:1800}})
+
+// 5. Всем сотрудникам добавить навык 'attending group meetings'
+db.workers.updateMany({},{$push:{skills:"attending group meetings"}})
+
+db.workers.updateMany({},{$addToSet:{skills:"attending group meetings"}})
+
+db.workers.find()
+
+
+
+// 7. Работникам Boris и Marina добавить в качестве элемента массива массив с навыками => двумерный массив
+
+db.workers.updateMany({"firstname":{$in:["Boris","Marina"]}},{$addToSet:{skills:["working with CRM-system","preparing for a concert"]}})
+
+// 8. Удалить последний элемент из массива skills у работников Boris и Marina
+db.workers.updateMany({"firstname":{$in:["Boris","Marina"]}},{$pop:{"skills":1}})
+
+
+db.workers.updateMany({},{$set:{gender:'not defined'}})
+db.workers.updateMany({"firstname":{$in:["Inga","Marina","Olga"]}},{$set:{"gender":'female'}})
+db.workers.updateMany({"firstname":{$in:["Boris","Ivan"]}},{$set:{"gender":'male'}})
+
+// 10. Вывести всех работников, которые зарабатывают больше 2000
+// 11. Вывести всех работников, кроме первого
+// 12. Вывести работников с третьего по пятого
+db.workers.find({salary:{$gt:2000}})
+db.workers.find().skip(1)
+db.workers.find().skip(2).limit(3)
+
+
+
+db.workers.find().sort({age:1})
+db.workers.find().sort({salary:-1})
+db.workers.find().sort({salary:1}).limit(3)
+
+
+db.workers.find({salary:{$gte:1800,$lte:2400}}).count()
+db.workers.find({gender:'female'},{age:{$lte:30}}).count()
+
+db.workers.aggregate({$match:{age:{$lte:30}}},{$group:{_id:"$gender",total:{$sum:"$salary"}}})
+// aggregate()
+
+// 5. Посчитать запрлату всех женщин и мужчин. Отсортировать выборку по total в порядке возрастания
+
+db.workers.aggregate(
+  {$match: {}},
+  {$group: {_id: '$gender', total: {$sum: '$salary'}} },
+  {$sort: {total: 1}}
+)
+
+// 6. Посчитать кол-во документов в выборке по свойству gender
+
+db.workers.aggregate(
+  {$match: {}},
+  {$count: 'gender'}
+)
+
+// 7. Посчитать запрлату всех женщин и мужчин младше 30 лет (вкл)
+
+db.workers.aggregate(
+  {$match: {age: {$lte: 30}}},
+  {$group: {_id: '$gender', total: {$sum: '$salary'}} }
+)
+
+
+db.workers.aggregate(
+  {$match: {}},
+  {$group: {_id: '$gender', total: {$sum: '$age'}} }
+)
+
+db.profiles.aggregate(
+	{$match:{firstname:"Ivan"}},
+	{$group:{_id:"$firstname",total: {$sum: '$salary'}}}
+)
+
+// ДЗ:
+// 1. В коллекции workers найти количество людей, зарабатывающих 1800
+// 2. В коллекции workers найти количество работников старше 30
+// 3. Вывести список уникальных фамилий из коллекции workers
+// 4. В коллекции profiles посчитайте сколько в сумме зарабатывают люди из Германии и Испании (в разбавке по странам) => Germany: sum1, Spain: sum2
+// 5. *В коллекции profiles посчитайте сколько в сумме зарабатывают люди из Германии и Испании (общая сумма по двум странам) => Sum: sum1 + sum2
+
+
+// 1. В коллекции workers найти количество людей, зарабатывающих 1800
+db.workers.find()
+
+db.workers.find({salary:{$eq:800}});
+
+// 2. В коллекции workers найти количество работников старше 30
+
+db.workers.find({age:{$gte:30}});
+
+// 3. Вывести список уникальных фамилий из коллекции workers
+
+db.workers.distinct('lastname');
+
+
+// 4. В коллекции profiles посчитайте сколько в сумме зарабатывают
+// люди из Германии и Испании
+// (в разбавке по странам) => Germany: sum1, Spain: sum2
+
+db.profiles.aggregate({$match:{}},{$group:{_id:"$country", total:{$sum:"$salary"}}})
+
+
+// 5. *В коллекции profiles посчитайте сколько в сумме зарабатывают
+// люди из Германии и Испании (общая сумма по двум странам) => Sum: sum1 + sum2
+
+
+db.profiles.aggregate({$match:{}},{$group:{_id:"$country", total:{$sum:"$salary"}}}).agregate({$match:{country:{$in:["Spain","Germany"]}}},{$})

@@ -1,0 +1,184 @@
+ Olga Apple 15.55 Berlin
+// 2 Anna Apple 10.05 Madrid
+// 3 Olga Kiwi 9.6 Berlin
+// 4 Anton Apple 20 Roma
+// 5 Olga Banana 8 Madrid
+// 6 Petr Orange 18.3 Paris
+
+db.createCollection('orders')
+db.order.insertMany([
+{_id:1, customer:'Olga',product:'Apple',amount:15.55 , city:'Berlin'},
+{_id:2, customer:'Anna',product:'Apple',amount:10.05 , city:'Madrid'},
+{_id:3, customer:'Olga',product:'Kiwi',amount:9.6 , city:'Berlin'},
+{_id:4, customer:'Anton',product:'Apple',amount:20 , city:'Roma'},
+{_id:5, customer:'Olga',product:'Banana',amount:8 , city:'Madrid'},
+{_id:6, customer:'Petr',product:'Orange',amount:18.3 , city:'Paris'}])
+db.order.drop()
+db.order.find()
+
+// 2. Найти сколько всего было слвершено покупок
+db.order.countDocuments()
+
+
+// 3. Найти сколько раз были куплены яблоки
+db.order.countDocuments({product:'Apple'})
+
+// 4. Вывести все документы отсортированными по стоимости покупки -
+// от самой недорогой до самой дорогой
+db.order.find().sort({amount:1})
+
+
+
+// 5. Найти сколько раз покупали яблоки в городах Берлин и Мадрид
+db.order.find({$and:[{city:{$in:['Madrid','Berlin']}},{product:'Apple'}]}).count()
+
+
+// 6. Найти сколько было потрачено каждым покупателем
+db.order.aggregate({$match:{}},{$group:{_id:'$customer',total:{$sum:'$amount'}}})
+
+// 7. Найти сколько было потрачено каждым покупателем (Ольга в Берлине и Ольга в Мадриде -
+// это разные люди)
+
+db.order.aggregate(
+  {$match: {}},
+  {$group: {
+    _id: {
+      customer: '$customer',
+      city: '$city'
+    }, 
+    amount_spent: {$sum: '$amount'}
+  }}
+)
+
+db.order.updateMany({},{$set:{count:0}})
+db.order.find()
+
+// 9. Документам с айди 1 и 3 задать значение count 3
+// 10. Документу с айди 4 задать значение count 2
+// 11. Всем документам увеличить count на 1
+
+
+db.order.updateMany({_id:{$in:[1,3]}},{$set:{count:3}})
+
+db.order.updateOne({_id:4},{$set:{count:2}})
+
+db.order.updateMany({},{$inc:{count:1}})
+
+
+db.order.aggregate({$match:{product:"Apple"}},{$group:{_id:"",total:{$sum:"$count"}}})
+//=====================================================================================
+
+
+// 1. Создать БД travel_agency
+
+// use travel_agency
+
+// 2. Создать коллекцию travel_offers со свойствами id, departure_city, destination_city, nights_count, price, orders_count, используя следующие данные:
+
+// 1 Berlin Paris 7 1000 2
+// 2 Madrid Paris 6 950 3
+// 3 Berlin London 5 1100 1
+// 4 Paris Lyon  9 1300 2
+// 5 Paris Yerevan 6 980 2
+// 6 London Paris 8 1330 3
+// 7 Roma Lyon 7 1050 5
+
+db.travel_offers.insertMany([
+  {
+    _id: 1,
+    departure_city: 'Berlin',
+    destination_city: 'Paris',
+    nights_count: 7,
+    price: 1000,
+    orders_count: 2
+  },
+  {
+    _id: 2,
+    departure_city: 'Madrid',
+    destination_city: 'Paris',
+    nights_count: 6,
+    price: 950,
+    orders_count: 3
+  },
+  {
+    _id: 3,
+    departure_city: 'Berlin',
+    destination_city: 'London',
+    nights_count: 5,
+    price: 1100,
+    orders_count: 1
+  },
+  {
+    _id: 4,
+    departure_city: 'Paris',
+    destination_city: 'Lyon',
+    nights_count: 9,
+    price: 1300,
+    orders_count: 2
+  },
+  {
+    _id: 5,
+    departure_city: 'Paris',
+    destination_city: 'Yerevan',
+    nights_count: 6,
+    price: 980,
+    orders_count: 2
+  },
+  {
+    _id: 6,
+    departure_city: 'London',
+    destination_city: 'Paris',
+    nights_count: 8,
+    price: 1330,
+    orders_count: 3
+  },
+  {
+    _id: 7,
+    departure_city: 'Roma',
+    destination_city: 'Lyon',
+    nights_count: 7,
+    price: 1050,
+    orders_count: 5
+  }
+])
+
+// 3. Найти сколько есть предложений по поездке в Париж дешевле 1000 (< 1000)
+db.travel_offers.find({destination_city: 'Paris'},{price:{$lt:1000}}).count()
+
+// 4. Найти сколько было куплено поездок из Берлина
+db.travel_offers.aggregate({$match:{departure_city: 'Berlin'}},{$group:{_id:'',total:{$sum:'$orders_count'}}})
+
+
+
+// 5. Найти сумму стоимости всех предложений по поездкам из Парижа
+
+db.travel_offers.aggregate({$match:{departure_city: 'Paris'}},{$group:{_id:'',total:{$sum:'$price'}}})
+
+// 6. Если купить все предложения по поездке в Лион, сколько в сумме ночей можно провести в Лионе? (16)
+db.travel_offers.aggregate({$match:{destination_city: 'Lyon'}},{$group:{_id:'',total:{$sum:'$nights_count'}}})
+
+
+
+// 7. Найти количество предложений по поездкам из Берлина
+db.travel_offers.find({departure_city: 'Berlin'}).count()
+
+
+
+
+db.travel_offers.aggregate(
+  {$match:
+{departure_city:{$in:['Paris','Berlin']}}},
+{$group:{_id:'$departure_city',total:{$sum:'$orders_count'}}},
+{$sort:{total:1}})
+
+db.travel_offers.find()
+
+db.travel_offers.aggregate(
+  {$match:
+{departure_city:{$in:['Paris','Berlin']}}},
+{$group:{_id:'',total:{$sum:'$orders_count'}}})
+
+
+db.travel_offers.aggregate(
+  {$match:{}},
+{$group:{_id:'$destination_city',total:{$sum:'$orders_count'}}})

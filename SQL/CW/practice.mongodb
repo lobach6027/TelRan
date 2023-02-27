@@ -1,0 +1,133 @@
+
+// 1. Создать БД universities
+
+use universities
+
+// 2. Создать коллекцию courses со свойствами id, title, students_count, weeks, points, university_title используя следующие данные:
+
+// 1 International Relations 7 10 10 Harvard
+// 2 Political Science 8 9 10 Yale
+// 3 Economy 3 6 12 Brown
+// 4 International Relations 5 5 13 Brown
+// 5 Economy 6 8 9 Yale
+// 6 German literature 3 7 10 Harvard
+// 7 Economy 15 20 15 Harvard
+
+db.courses.insertMany([
+  {
+    _id: 1,
+    title: "International Relations",
+    students_count: 7,
+    weeks: 10,
+    ponts: 10,
+    university_title: "Harvard",
+  },
+  {
+    _id: 2,
+    title: "Political Science",
+    students_count: 8,
+    weeks: 9,
+    ponts: 10,
+    university_title: "Yale",
+  },
+  {
+    _id: 3,
+    title: "Economy",
+    students_count: 3,
+    weeks: 6,
+    ponts: 12,
+    university_title: "Brown",
+  },
+  {
+    _id: 4,
+    title: "International Relations",
+    students_count: 5,
+    weeks: 5,
+    ponts: 13,
+    university_title: "Yale",
+  },
+  {
+    _id: 5,
+    title: "Economy",
+    students_count: 6,
+    weeks: 8,
+    ponts: 9,
+    university_title: "Yale",
+  },
+  {
+    _id: 6,
+    title: "German literature",
+    students_count: 3,
+    weeks: 7,
+    ponts: 10,
+    university_title: "Harvard",
+  },
+  {
+    _id: 7,
+    title: "Economy",
+    students_count: 15,
+    weeks: 20,
+    ponts: 15,
+    university_title: "Harvard",
+  }
+])
+
+db.courses.find()
+db.courses.drop()
+
+
+
+db.courses.find().count()
+db.courses.updateMany({},{$rename:{"ponts":"points"}})
+
+db.courses.aggregate(
+{$match:{university_title: "Yale"}},
+{$group:{_id:"$university_title", weeks:{$sum: "$weeks"}}})
+
+
+db.courses.aggregate(
+{$match:{university_title:{$in:["Yale","Brown"]}}},
+{$group:{_id:"$university_title", weeks:{$sum: "$weeks"}}})
+
+db.courses.aggregate(
+{$match:{university_title:{$in:["Yale","Brown"]}}},
+{$group:{_id:{}, weeks:{$sum: "$weeks"}}})
+
+
+db.courses.insertMany([{
+    _id: 8,
+    title: "Economy",
+    students_count: 5,
+    weeks: 7,
+    ponts: 13,
+    university_title: "Oxford",
+  },
+  {
+    _id: 9,
+    title: "English literature",
+    students_count: 4,
+    weeks: 5,
+    ponts: 10,
+    university_title: "Cambridge",
+  },
+  {
+    _id: 10,
+    title: "International Relations",
+    students_count: 5,
+    weeks: 10,
+    ponts: 12,
+    university_title: "Bremen University",
+  }])
+db.courses.updateMany({},{$set:{country:"not defined"}})
+db.courses.updateMany({university_title:{$in:["Harvard","Yale","Brown "]}},{$set:{country:"USA"}})
+db.courses.updateMany({university_title:{$in:["Oxford","Cambridge"]}},{$set:{country:"UK"}})
+db.courses.updateMany({university_title:"Bremen University"},{$set:{country:"Germany"}})
+
+db.courses.find({weeks:{$lt:8},"title": "International Relations"}).count()
+
+
+db.courses.aggregate(
+{$match:{}},
+{$group:{_id:"$university_title", weeks:{$sum: "$weeks"}}},
+{$sort:{weeks:1}})
+

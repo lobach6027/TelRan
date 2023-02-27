@@ -1,21 +1,20 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import axios from "axios";
 import Note from "../Note/Note";
 import s from "./style.module.css";
+import noteServise from "../../servises/notes";
 
-const fetchNotes = () => {
-  return axios.get("http://localhost:3001/notes");
-};
 export default function Notes() {
   const [notes, setNotes] = useState([]);
+
   useEffect(() => {
-    fetchNotes()
-      .then((res) => {
+   noteServise
+   .getAll()
+      .then(res=> {
         setNotes(res.data);
-        console.log(res.data);
       })
       .catch((err) => {
+        //toast(err)
         console.log(err);
       });
   }, []);

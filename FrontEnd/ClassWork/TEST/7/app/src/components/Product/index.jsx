@@ -9,10 +9,17 @@ export default function Product({
   images,
   deleteProduct,
   addToBasket,
+  indexNumber,
+  changeFoto
 }) {
+  console.log(indexNumber%images.length)
   return (
     <div className={s.card}>
-      <img src={images[0]} alt={title} />
+      <div onMouseEnter={()=>changeFoto(id)}><img   src={images[indexNumber%images.length]} alt={title} /></div>
+      
+
+
+
       <div className={s.info}>
         <h3>{title}</h3>
         <p className={s.descr}>{description}</p>

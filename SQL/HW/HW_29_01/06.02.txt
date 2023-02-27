@@ -1,0 +1,37 @@
+// ДЗ:
+// 1. В коллекции workers найти количество людей, зарабатывающих 1800
+// 2. В коллекции workers найти количество работников старше 30
+// 3. Вывести список уникальных фамилий из коллекции workers
+// 4. В коллекции profiles посчитайте сколько в сумме зарабатывают люди из Германии и Испании (в разбавке по странам) => Germany: sum1, Spain: sum2
+// 5. *В коллекции profiles посчитайте сколько в сумме зарабатывают люди из Германии и Испании (общая сумма по двум странам) => Sum: sum1 + sum2
+
+
+// 1. В коллекции workers найти количество людей, зарабатывающих 1800
+db.workers.find()
+
+db.workers.find({salary:{$eq:800}});
+
+// 2. В коллекции workers найти количество работников старше 30
+
+db.workers.find({age:{$gte:30}});
+
+// 3. Вывести список уникальных фамилий из коллекции workers
+
+db.workers.distinct('lastname');
+
+
+// 4. В коллекции profiles посчитайте сколько в сумме зарабатывают
+// люди из Германии и Испании
+// (в разбавке по странам) => Germany: sum1, Spain: sum2
+
+db.profiles.aggregate({$match:{}},{$group:{_id:"$country", total:{$sum:"$salary"}}})
+
+
+// 5. *В коллекции profiles посчитайте сколько в сумме зарабатывают
+// люди из Германии и Испании (общая сумма по двум странам) => Sum: sum1 + sum2
+
+
+db.profiles.aggregate({$match:{country:{$in:["Germany","France"]}}},{$group:{_id:"", total:{$sum:"$salary"}}})
+
+db.profiles.aggregate({$match:{country:{$in:["Germany","France"]}}},{$group:{_id:"$country", total:{$sum:"$salary"}}},
+{$group:{_id:"",count:{$sum:"$total"}}})
