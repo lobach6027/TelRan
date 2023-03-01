@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const hanoiTower = (numbersOfRings, start, middle, finish) => {
+        if (numbersOfRings > 0) {
+          hanoiTower(numbersOfRings - 1, start, finish, middle);
+          console.log("Move disc " + numbersOfRings + " from " + start + " to " + finish);
+          hanoiTower(numbersOfRings - 1, middle, start, finish);
+        }
+      };
+      console.log(hanoiTower(3, 1, 2, 3));
+      //console.log(hanoiTower(4, 1, 2, 3));
+      //console.log(hanoiTower(5, 1, 2, 3));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+.basketItem{
+    border: 1px solid black;
+    background-color: aliceblue;
+padding: 20px;
+width: 80%;
+margin: 20px auto;
+display: flex;
+gap: 20px;
+justify-content: space-between;
+}
+.btnsContainer{
+    display: flex;
+    flex-direction: column;
+  
+    
+}

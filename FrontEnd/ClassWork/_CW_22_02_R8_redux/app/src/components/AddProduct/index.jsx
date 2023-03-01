@@ -1,20 +1,14 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { addProductAction } from "../../store/reducer/clickerDeducer";
 
 export default function AddForm() {
   const dispatch = useDispatch();
   const submit = (e) => {
     e.preventDefault();
     const { title, price, discount } = e.target;
-    dispatch({
-      type: "ADD",
-      payload: {
-        id: Date.now(),
-        title: title.value,
-        price: price.value,
-        discount: discount.value,
-      },
-    });
+    dispatch(addProductAction(title.value,price.value,discount.value)
+    );
     console.log(title.value, price.value, discount.value);
 
     title.value = "";
