@@ -9,6 +9,7 @@ export default function Header() {
             <Link to="/about">About</Link>
             <Link to="/contacts">Contacts</Link>
             <Link to="/addnote">Add new post</Link>
+            <Link to ="/register">new user registration</Link>
         </nav>
     </div>
   )

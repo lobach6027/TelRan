@@ -18,7 +18,7 @@ export const deleteAction = id => {
   return { type: DELETE_ITEM, payload: id };
 };
 
-const defaultState = [{ id: 12, count: 1 }];
+const defaultState = [];
 
 export const basketReducer = (state = defaultState, action) => {
   if (action.type === ADD_TO_BASKET) {

@@ -1,18 +1,27 @@
 import React from "react";
-import {useDispatch} from 'react-redux'
+import { useDispatch } from "react-redux";
+import { addProductAction } from "../../store/reducer/productsReducer";
 
 export default function AddProduct() {
-    const dispatch = useDispatch()
-const submit = (e)=>{
+  const dispatch = useDispatch();
+  const submit = (e) => {
     e.preventDefault();
-const {title, price, discount} = e.target
-dispatch({type:"ADD", payload: {id: Date.now(),title: title.value,price: price.value,discount: discount.value} })
-console.log(title.value,price.value,discount.value)
-title.value = ""
-price.value = ""
-discount.value = ""
-}
+    const { title, price, discount } = e.target;
+dispatch(addProductAction(title.value,price.value,discount.value))
+    /*dispatch({
+      type: "ADD",
+      payload: {
+        id: Date.now(),
+        title: title.value,
+        price: price.value,
+        discount: discount.value,
+      }});*/
 
+    console.log(title.value, price.value, discount.value);
+    title.value = "";
+    price.value = "";
+    discount.value = "";
+  };
 
   return (
     <form onSubmit={submit}>
