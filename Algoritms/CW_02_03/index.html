@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const binarySerch = (array, number) => {
+        let start = 0;
+        let end = array.length - 1;
+        while (start <= end) {
+          let middle = Math.floor((start + end) / 2);
+          if (array[middle] === number) {
+            return middle;
+          } else if (array[middle] < number) {
+            start = middle + 1;
+          } else if (array[middle] > number) {
+            end = middle - 1;
+          }
+        }
+        return -1;
+      };
+
+
+      
+      const arr1 = [1, 2, 3, 7, 8, 10, 15, 20, 36, 48];
+      function findIndexNum(arr, num, left = 0, rigth = arr.length - 1) {
+        let middle = Math.floor((left + rigth) / 2);
+        // console.log(`left: ${left} rigth: ${rigth}  mid: ${middle}`)
+        if (left <= rigth) {
+          if (arr[middle] == num) {
+            return console.log(middle);
+          } else if (arr[middle] > num) {
+            return findIndexNum(arr, num, left, middle - 1);
+          } else if (arr[middle] < num) {
+            return findIndexNum(arr, num, middle + 1, rigth);
+          }
+        }
+        return console.log("-1");
+      }
+      findIndexNum(arr1, 7);
+      findIndexNum(arr1, 20);
+      findIndexNum(arr1, 50);
+
+      console.log();
+    </script>
+  </body>
+</html>
