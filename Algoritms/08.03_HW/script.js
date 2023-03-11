@@ -29,7 +29,7 @@ const sorting = (array) => {
 
 const arr = [1, 5, 1, 9, 9, 4, 10, 1];
 console.log(sorting(arr));*/
-
+/*
 console.log(
   "Счетчик инверсии для массива указывает, насколько далек (или близок) массив от сортировки. Если массив уже отсортирован, то счетчик инверсии равен 0, а если массив отсортирован в обратном порядке, то счетчик инверсии будет максимальным. "
 );
@@ -51,3 +51,25 @@ const serchInversion = (arr) => {
 };
 
 console.log(serchInversion(array2));
+*/
+let fruits = ["Яблоко", "Апельсин", "Груша"];
+
+fruits.pop()
+
+console.log(fruits)
+const a = 10;
+const b = '10';
+console.log(a===b)
+console.log(a==b)
+
+let arr = ["t", "e", "s", "t"];
+
+console.log( arr.slice(1, 3) ); // e,s (копирует с 1 до 3)
+console.log( arr.slice(-2))
+console.log(arr);
+
+let arr2 = [1, 2];
+
+
+console.log( arr2.concat([3, 4], 5, 6) ); // 1,2,3,4,5,6
+console.log(arr2);
