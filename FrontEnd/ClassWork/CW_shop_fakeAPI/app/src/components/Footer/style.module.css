@@ -1,0 +1,13 @@
+.wrapper{
+    height: 50px;
+    width: 100%;
+    background-color:#34495E; 
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+}
+.wrapper div{
+    color: white;
+    font-family: 'Inter', sans-serif;
+}

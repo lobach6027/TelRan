@@ -1,0 +1,36 @@
+.image-slider{
+    padding: 30px 0 70px 0;
+}
+.image-slider__wrapper{
+
+}
+.image-slider__slide{
+
+}
+.image-slider__image{
+    text-align: center;
+}
+.image-slider__image img{
+    max-width: 100%;
+}
+
+.image-slider .swiper-button-prev::after,
+.image-slider .swiper-button-next::after{
+    color: rgb(176, 10, 10);
+    font-size: 80px;
+}
+.image-slider .swiper-pagination-fraction {
+    font-size: 20px;
+    color: rgb(253, 255, 253);
+}
+
+.image-slider .swiper-pagination-progressbar-fill{
+    background-color: rgb(239, 10, 48);
+}
+
+.image-slider .swiper-scrollbar-drag{
+    cursor: pointer;
+    background-color: aqua;
+}
+
+

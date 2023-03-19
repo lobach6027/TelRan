@@ -1,0 +1,32 @@
+.card{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid gray;
+    padding: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.card img{
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+}
+.addToBasket{
+background-color: transparent;
+padding: 10px;
+display: flex;
+justify-content: center;
+align-items: center;
+border: none;
+color: gray;
+font-size: 22px;
+
+}
+
+.addToBasket:hover{
+    
+    cursor: pointer;
+    color: orange;
+}

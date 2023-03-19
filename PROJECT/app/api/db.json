@@ -1,0 +1,67 @@
+{
+  "lessons": [
+    {
+      "id": 1,
+      "subject": "one",
+      "numberOflessons": "111",
+      "description": "lorem......"
+    },
+    {
+      "id": 2,
+      "subject": "one",
+      "numberOflessons": 10,
+      "description": "lorem......"
+    },
+    {
+      "id": 3,
+      "subject": "one",
+      "numberOflessons": 10,
+      "description": "lorem......"
+    },
+    {
+      "id": 4,
+      "subject": "one",
+      "numberOflessons": 10,
+      "description": "lorem......"
+    },
+    {
+      "subject": "test",
+      "numberOflessons": "test",
+      "description": "5",
+      "id": 5
+    },
+    {
+      "subject": "test",
+      "numberOflessons": "test",
+      "description": "6",
+      "id": 6
+    }
+  ],
+  "users": [
+    {
+      "email": "oksanalobach247@gmail.com",
+      "password": "$2a$10$rSVgvnJj1.q46h5BsTsZ2O/myGBkXKcXlCB4nz8LRT0.LeJKG9peq",
+      "id": 1
+    },
+    {
+      "email": "oksanalobach47@gmail.com",
+      "password": "$2a$10$VLVdM9Cqig9UFivI78oFhemPnScDuB5BZtDw6051krFOS50PLxuNS",
+      "id": 2
+    },
+    {
+      "email": "knopa_407@ukr.net",
+      "password": "$2a$10$7qtVT3yRdAWqKwXIcPT.nuUp1Vgd4rsQvjhXj9Qoshyath8Wi3/pq",
+      "id": 3
+    },
+    {
+      "email": "user1@mail.ru",
+      "password": "$2a$10$1uOgFZGyWJ30WIURTHq8RegW0nl4DYYp7YxTzhx23Q6w/b0.wJrMy",
+      "id": 4
+    },
+    {
+      "email": "user122@mail.ru",
+      "password": "$2a$10$Zh7L3yzMOybjqU91bcl32OhUC0f5A5I22tgw4xlcbfrAg4iUPH0v.",
+      "id": 5
+    }
+  ]
+}

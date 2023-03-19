@@ -1,0 +1,16 @@
+.wrapper {
+  padding-left: 20%;
+  height: 800px;
+}
+
+h1 {
+  margin-top: 60px;
+}
+.menu{
+  margin-top: 70px;
+  display: grid;
+  grid-template-columns: repeat(2, 350px) ; /*auto-fit*/
+  grid-auto-rows: 50px;
+  gap: 50px;
+ 
+}
