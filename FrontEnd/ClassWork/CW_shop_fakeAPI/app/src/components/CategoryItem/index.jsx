@@ -1,7 +1,12 @@
-import React from 'react'
-import s from './style.module.css'
-export default function CategoryItem({label}) {
+import React from "react";
+import { Link } from "react-router-dom";
+import s from "./style.module.css";
+export default function CategoryItem({ label }) {
+
+
   return (
-    <div className={s.card}>{label}</div>
-  )
+    <Link className={s.card} to={`category/${label}`}>
+      <div>{label}</div>
+    </Link>
+  );
 }
